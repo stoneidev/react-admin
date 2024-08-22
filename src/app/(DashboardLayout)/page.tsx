@@ -28,6 +28,9 @@ const Dashboard = () => {
     queryFn: fetchPublicData,
   });
 
+  if (isPublicLoading) return <div>Loading...</div>;
+  if (publicError) return <div>Error: {publicError.message}</div>;
+
   return (
    <PageContainer title="Dashboard" description="this is Dashboard">
       <h1>{JSON.stringify(publicData.message)}</h1>
