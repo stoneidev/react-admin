@@ -9,9 +9,26 @@ import ProductPerformance from '@/app/(DashboardLayout)/components/dashboard/Pro
 import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
 import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/MonthlyEarnings';
 
+const fetchPublicData = async () => {
+  const { data } = await api.get("/admin");
+  return data;
+}
+
 const Dashboard = () => {
+
+  const {
+    data: publicData,
+    isLoading: isPublicLoading,
+    error: publicError,
+  } = useQuery({
+    queryKey: ["publicData"],
+    queryFn: fetchPublicData,
+  });
+
   return (
-    <PageContainer title="Dashboard" description="this is Dashboard">
+   <PageContainer title="Dashboard" description="this is Dashboard">
+
+   <h1>{publicData}</h1>
       <Box>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={8}>
