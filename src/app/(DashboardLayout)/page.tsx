@@ -30,8 +30,7 @@ const Dashboard = () => {
 
   return (
    <PageContainer title="Dashboard" description="this is Dashboard">
-
-   <h1>{publicData.message}</h1>
+      <h1>{JSON.stringify(publicData.message)}</h1>
       <Box>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={8}>
